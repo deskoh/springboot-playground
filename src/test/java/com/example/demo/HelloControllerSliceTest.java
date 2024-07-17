@@ -11,7 +11,7 @@ import static org.mockito.BDDMockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(HelloController.class) // only creates beans relevant to AccountController
+@WebMvcTest(HelloController.class) // only creates beans relevant to HelloController
 public class HelloControllerSliceTest {
 
     @Autowired

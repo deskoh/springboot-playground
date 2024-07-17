@@ -15,7 +15,7 @@ class TestingWebApplicationTests {
     @Autowired
     private Settings settings;
 
-        @Test
+    @Test
     void contextLoads() {
         assertThat(controller).isNotNull();
         assertThat(settings).isNotNull();
