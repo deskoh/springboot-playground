@@ -22,13 +22,12 @@ public class DemoApplication {
     @Bean
     ApplicationRunner applicationRunner(
             @Value("${message-from-application-properties:OOPS!}") String valueDoesExist,
-            @Value("${mesage-from-application-properties:OOPS!}") String valueDoesNotExist,
-            Settings settings
+            @Value("${mesage-from-application-properties:OOPS!}") String valueDoesNotExist
     ) {
         return args -> {
-            log.info("message from application.properties " + valueDoesExist);
-            log.info("missing message from application.properties " + valueDoesNotExist);
-            log.info(settings.getHost() + " " + settings.getPort());
+            log.debug("this is debug logging");
+            log.info("message from application.properties {}", valueDoesExist);
+            log.info("missing message from application.properties {}", valueDoesNotExist);
         };
     }
 }
