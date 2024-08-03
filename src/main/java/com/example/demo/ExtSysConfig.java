@@ -12,5 +12,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class ExtSysConfig {
     private final String url;
     private final int port;
+    private final String path;
     private final String apiKey;
 }

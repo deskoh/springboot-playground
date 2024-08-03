@@ -10,9 +10,12 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+// only creates beans relevant to TopicController
 @WebMvcTest(TopicController.class)
 public class TopicControllerSliceTest {
 
@@ -21,6 +24,27 @@ public class TopicControllerSliceTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @Test
+    public void getTopics_shouldReturnTopic() throws Exception {
+        // arrange
+        given(topicService.getTopic("1"))
+                .willReturn(
+                        new Topic("spring", "Spring", "Spring Description")
+                );
+
+        // act and assert
+        mockMvc.perform(get("/topics/1"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.id").value("spring"))
+                .andExpect(jsonPath("$.name").value("Spring"))
+                .andExpect(jsonPath("$.description").value("Spring Description"));
+
+        // verify
+        verify(topicService).getTopic("1");
+
+    }
 
     @Test
     void testUpdateTopic() throws Exception {
