@@ -26,16 +26,16 @@ public class TopicController {
     }
 
     @PostMapping("/topics")
-    public ResponseEntity addTopic(@RequestBody Topic topic) {
+    public ResponseEntity<HttpStatus> addTopic(@RequestBody Topic topic) {
         topicService.addTopic(topic);
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/topics/{id}")
-    public ResponseEntity<Topic> updateTopic(@PathVariable String id, @RequestBody Topic topic) {
+    public ResponseEntity<?> updateTopic(@PathVariable String id, @RequestBody Topic topic) {
         if (topicService.updateTopic(id, topic))
             return ResponseEntity.ok(topic);
-        return new ResponseEntity(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<HttpStatus>(HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/topics/{id}")
