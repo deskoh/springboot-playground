@@ -37,6 +37,7 @@ public class ExternalServiceTest {
         MockitoAnnotations.openMocks(this);
 
         // Mock the WebClient behavior
+        // Alternative: Use MockWebServer (com.squareup.okhttp3.mockwebserver / com.squareup.okhttp3.okhttp)
         when(webClient.get()).thenReturn(requestHeadersUriSpec);
         when(requestHeadersUriSpec.uri(any(String.class))).thenReturn(requestHeadersSpec);
         when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);

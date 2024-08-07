@@ -10,10 +10,12 @@ import reactor.core.publisher.Mono;
 @RestController
 public class ExternalServiceController {
     private final ExternalService service;
+    private final ExternalRestClientService restClientService;
 
 
-    public ExternalServiceController(ExternalService service) {
+    public ExternalServiceController(ExternalService service, ExternalRestClientService restClientService) {
         this.service = service;
+        this.restClientService = restClientService;
     }
 
     @GetMapping("/external")
@@ -25,5 +27,10 @@ public class ExternalServiceController {
     @GetMapping("/external2")
     public ResponseEntity<String> external2() {
         return ResponseEntity.ok("External: " + service.getData2());
+    }
+
+    @GetMapping("/external3")
+    public ResponseEntity<String> external3() {
+        return ResponseEntity.ok("External: " + restClientService.getData());
     }
 }
