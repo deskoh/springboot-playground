@@ -7,6 +7,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.system.CapturedOutput;
 import org.springframework.boot.test.system.OutputCaptureExtension;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -22,13 +23,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @TestPropertySource(properties = {
         "logging.level.com.example.demo=DEBUG",
 })
+@ActiveProfiles("test")
 public class HelloControllerTest {
 
     @Autowired
     MockMvc mockMvc;
 
     @Test
-    public void hello_shouldReturnHi(CapturedOutput capture) throws Exception {
+    public void hello_shouldReturnHi() throws Exception {
         mockMvc.perform(get("/hello"))
                 // .andDo(print())
                 .andExpect(status().isOk());

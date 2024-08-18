@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MongoIndexCreator implements ApplicationListener<ContextRefreshedEvent> {
 
-    private MongoTemplate mongoTemplate;
+    private final MongoTemplate mongoTemplate;
 
     public MongoIndexCreator(MongoTemplate mongoTemplate) {
         this.mongoTemplate = mongoTemplate;

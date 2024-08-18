@@ -3,6 +3,7 @@ package com.example.demo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,8 +12,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestPropertySource(properties = {
         "extSys.url=1.1.1.1",
         "extSys.port=8080",
-        "extSys.apiKey=secret"
+        "extSys.apiKey=secret",
 })
+@ActiveProfiles("test")
 public class ExtSysConfigTest {
 
     @Autowired
