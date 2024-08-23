@@ -12,30 +12,42 @@ public class DataSeedingRunner implements CommandLineRunner {
 
     private final boolean seedData;
     private final ItemRepository groceryItemRepo;
+    private final StoreRepository storeRepo;
 
-    public DataSeedingRunner(ItemRepository groceryItemRepo, @Value("${app.seed-data}") boolean seedData) {
+    public DataSeedingRunner(
+            ItemRepository groceryItemRepo,
+            StoreRepository storeRepo,
+            @Value("${app.seed-data}") boolean seedData) {
         this.groceryItemRepo = groceryItemRepo;
+        this.storeRepo = storeRepo;
         this.seedData = seedData;
     }
 
     @Override
     public void run(String... args) {
         if (!this.seedData) return;
-        System.out.println("-----CREATE GROCERY ITEMS-----\n");
-        createGroceryItems();
-        System.out.println("\n-----SHOW ALL GROCERY ITEMS-----\n");
-        showAllGroceryItems();
-        System.out.println("\n-----GET ITEM BY NAME-----\n");
-        getGroceryItemByName("Whole Wheat Biscuit");
-        System.out.println("\n-----GET ITEMS BY CATEGORY-----\n");
-        getItemsByCategory("millets");
-        System.out.println("\n-----UPDATE CATEGORY NAME OF SNACKS CATEGORY-----\n");
-        updateCategoryName("snacks");
-        System.out.println("\n-----DELETE A GROCERY ITEM-----\n");
-        deleteGroceryItem("Kodo Millet");
-        System.out.println("\n-----FINAL COUNT OF GROCERY ITEMS-----\n");
-        findCountOfGroceryItems();
-        System.out.println("\n-----THANK YOU-----");
+        if (groceryItemRepo != null) {
+            System.out.println("-----CREATE GROCERY ITEMS-----\n");
+            createGroceryItems();
+            System.out.println("\n-----SHOW ALL GROCERY ITEMS-----\n");
+            showAllGroceryItems();
+            System.out.println("\n-----GET ITEM BY NAME-----\n");
+            getGroceryItemByName("Whole Wheat Biscuit");
+            System.out.println("\n-----GET ITEMS BY CATEGORY-----\n");
+            getItemsByCategory("millets");
+            System.out.println("\n-----UPDATE CATEGORY NAME OF SNACKS CATEGORY-----\n");
+            updateCategoryName("snacks");
+            System.out.println("\n-----DELETE A GROCERY ITEM-----\n");
+            deleteGroceryItem("Kodo Millet");
+            System.out.println("\n-----FINAL COUNT OF GROCERY ITEMS-----\n");
+            findCountOfGroceryItems();
+            System.out.println("\n-----THANK YOU-----");
+        }
+        if (storeRepo != null) {
+            System.out.println("-----CREATE STORE-----\n");
+            createGroceryStores();
+        }
+
     }
 
     // Print details in readable form

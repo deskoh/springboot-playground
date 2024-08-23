@@ -17,7 +17,7 @@ public class ItemRepositoryTest {
 
     @BeforeEach
     public void setUp() {
-        var runner = new DataSeedingRunner(itemRepository, true);
+        var runner = new DataSeedingRunner(itemRepository, null, true);
         runner.run();
     }
 
@@ -63,13 +63,13 @@ public class ItemRepositoryTest {
     @Test
     void count() {
         var results = itemRepository.count();
-        assertEquals(4, results);
+        assertEquals(5, results);
     }
 
     @Test
     void countTotalQuantity() {
         var count = itemRepository.countTotalQuantity();
-        assertEquals(14, count);
+        assertEquals(16, count);
     }
 
     @Test

@@ -1,5 +1,7 @@
-package com.example.demo.topic;
+package com.example.demo.controller;
 
+import com.example.demo.model.Topic;
+import com.example.demo.service.TopicService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

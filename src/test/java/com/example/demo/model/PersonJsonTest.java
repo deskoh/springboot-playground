@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
