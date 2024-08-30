@@ -1,15 +1,12 @@
 package com.example.demo.repository;
 
 import com.example.demo.model.GroceryItem;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
 import java.util.List;
 
-@ConditionalOnBean(MongoTemplate.class)
 public interface ItemRepository extends MongoRepository<GroceryItem, String> {
 
     GroceryItem findItemByName(String name);

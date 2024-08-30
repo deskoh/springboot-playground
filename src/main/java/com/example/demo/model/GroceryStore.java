@@ -9,6 +9,7 @@ import java.util.List;
 
 @Document(collection = "stores")
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Builder

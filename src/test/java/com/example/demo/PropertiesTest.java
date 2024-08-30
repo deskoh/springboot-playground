@@ -5,12 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.Environment;
-import org.springframework.test.context.ActiveProfiles;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-@ActiveProfiles("test")
 public class PropertiesTest {
 
     @Autowired
@@ -29,5 +27,4 @@ public class PropertiesTest {
         assertThat(env.getProperty("server.port")).isEqualTo("8080");
         assertThat(env.getProperty("server.port", Integer.class)).isEqualTo(8080);
     }
-
 }

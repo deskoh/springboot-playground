@@ -1,20 +1,15 @@
 package com.example.demo.repository;
 
-import com.example.demo.config.JpaPopulator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
-import org.springframework.context.annotation.Import;
-import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataMongoTest
-@ActiveProfiles("test-db")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@Import(JpaPopulator.class)
 public class ItemRepositoryTest {
 
     @Autowired
