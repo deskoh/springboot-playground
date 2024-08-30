@@ -1,21 +1,26 @@
 package com.example.demo.repository;
 
-import org.junit.jupiter.api.BeforeEach;
+import com.example.demo.config.JpaPopulator;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataMongoTest
 @ActiveProfiles("test-db")
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Import(JpaPopulator.class)
 public class ItemRepositoryTest {
 
     @Autowired
     private ItemRepository itemRepository;
 
-    @BeforeEach
+    @BeforeAll
     public void setUp() {
         var runner = new DataSeedingRunner(itemRepository, null, true);
         runner.run();
