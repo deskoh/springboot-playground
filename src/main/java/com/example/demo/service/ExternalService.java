@@ -7,6 +7,9 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+/**
+ * Calling External Service using RestTemplate (legacy). See ExternalRestRestClientService for example using RestClient
+ */
 @Slf4j
 @Service
 public class ExternalService {
