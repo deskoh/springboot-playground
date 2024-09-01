@@ -53,7 +53,7 @@ public class StoreRepositoryTest {
     }
 
     @Test
-    void given_itemNames_findStoreNamesWithItems_shouldReturn_correctStores() {
+    void given_itemNames_findStoreNamesWithItems2WithItems_shouldReturn_correctStores() {
         var results = storeRepository.findStoreNamesWithItems(Arrays.asList("Apple", "Orange", "Grapes"));
         assertThat(results)
                 .containsExactlyInAnyOrder("Green Grocer", "Market Fresh", "City Mart");
