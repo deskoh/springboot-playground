@@ -12,7 +12,7 @@ public interface StoreRepository extends MongoRepository<GroceryStore, String> {
 
     <T> List<T> findByItemsItemNameIn(List<String> itemsWhitelist, Class<T> type);
 
-    @Query(value = "{ 'items.itemName': { $in: ?0 }}", fields = "{ storeName:  1 }")
+    @Query(value = "{ 'items.itemName': { $in: ?0 }}", fields = "{ storeName: 1 }")
     List<GroceryStore> findStoresWithItems(List<String> itemsWhitelist);
 
     @Aggregation(pipeline = {

@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @ConfigurationPropertiesScan // Scan for ConfigurationProperties
+// Alternatively: Specify ConfigurationProperties class explicitly
+// @EnableConfigurationProperties({ExtSysConfig.class, ExtSysConfigRecord.class, Settings.class})
 public class DemoApplication {
 
     Logger log = LoggerFactory.getLogger(DemoApplication.class);
