@@ -16,12 +16,19 @@ import static org.assertj.core.api.Assertions.assertThat;
         "extSys.port=8080",
         "extSys.apiKey=secret",
 })
-@EnableConfigurationProperties(ExtSysConfig.class)
+@EnableConfigurationProperties({ExtSysConfig.class, ExtSysConfigRecord.class})
 public class ExtSysConfigTest {
     @Test
     void testConfigAbleToBindToProperties(@Autowired ExtSysConfig config) {
         assertThat(config.getUrl()).isEqualTo("1.1.1.1");
         assertThat(config.getPort()).isEqualTo(8080);
         assertThat(config.getApiKey()).isEqualTo("secret");
+    }
+
+    @Test
+    void testConfig2AbleToBindToProperties(@Autowired ExtSysConfigRecord config) {
+        assertThat(config.url()).isEqualTo("1.1.1.1");
+        assertThat(config.port()).isEqualTo(8080);
+        assertThat(config.apiKey()).isEqualTo("secret");
     }
 }
