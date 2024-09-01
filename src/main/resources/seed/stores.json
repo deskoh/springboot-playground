@@ -1,0 +1,102 @@
+[
+  {
+    "id": "1",
+    "storeName": "Green Grocer",
+    "location": "Downtown",
+    "items": [
+      {
+        "itemName": "Apple",
+        "category": "Fruits",
+        "price": 0.99,
+        "brand": "FarmFresh"
+      },
+      {
+        "itemName": "Milk",
+        "category": "Dairy",
+        "price": 2.49,
+        "brand": "DairyPure"
+      }
+    ],
+    "_class": "com.example.demo.model.GroceryStore"
+  },
+  {
+    "id": "2",
+    "storeName": "Healthy Harvest",
+    "location": "Uptown",
+    "items": [
+      {
+        "itemName": "Banana",
+        "category": "Fruits",
+        "price": 1.79,
+        "brand": "Chiquita"
+      }
+    ],
+    "_class": "com.example.demo.model.GroceryStore"
+  },
+  {
+    "id": "3",
+    "storeName": "Market Fresh",
+    "location": "Midtown",
+    "items": [
+      {
+        "itemName": "Orange",
+        "category": "Fruits",
+        "price": 1.29,
+        "brand": "SunKist"
+      },
+      {
+        "itemName": "Spinach",
+        "category": "Vegetables",
+        "price": 1.79,
+        "brand": "Earthbound Farm"
+      }
+    ],
+    "_class": "com.example.demo.model.GroceryStore"
+  },
+  {
+    "id": "4",
+    "storeName": "Farmers Market",
+    "location": "Suburbs",
+    "items": [
+      {
+        "itemName": "Yogurt",
+        "category": "Dairy",
+        "price": 2.49,
+        "brand": "Chobani"
+      },
+      {
+        "itemName": "Potato",
+        "category": "Vegetables",
+        "price": 1.79,
+        "brand": "Russet"
+      }
+    ],
+    "_class": "com.example.demo.model.GroceryStore"
+  },
+  {
+    "id": "5",
+    "storeName": "City Mart",
+    "location": "City Center",
+    "items": [
+      {
+        "itemName": "Grapes",
+        "category": "Fruits",
+        "price": 2.49,
+        "brand": "Del Monte"
+      },
+      {
+        "itemName": "Butter",
+        "category": "Dairy",
+        "price": 3.49,
+        "brand": "Land O'Lakes"
+      },
+      {
+        "itemName": "Cucumber",
+        "category": "Vegetables",
+        "price": 0.89,
+        "brand": "NatureSweet"
+      }
+    ],
+    "_class": "com.example.demo.model.GroceryStore"
+  }
+]

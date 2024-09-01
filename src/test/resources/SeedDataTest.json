@@ -1,0 +1,39 @@
+[
+  {
+    "id": "Whole Wheat Biscuit",
+    "name": "Whole Wheat Biscuit",
+    "quantity": 5,
+    "category": "munchies",
+    "_class": "com.example.demo.model.GroceryItem"
+  },
+  {
+    "id": "Dried Red Chilli",
+    "name": "Dried Whole Red Chilli",
+    "quantity": 2,
+    "category": "spices",
+    "_class": "com.example.demo.model.GroceryItem"
+  },
+  {
+    "id": "Pearl Millet",
+    "name": "Healthy Pearl Millet",
+    "quantity": 1,
+    "category": "millets",
+    "_class": "com.example.demo.model.GroceryItem"
+  },
+  {
+    "id": "Cheese Crackers",
+    "name": "Bonny Cheese Crackers Plain",
+    "quantity": 6,
+    "category": "munchies",
+    "_class": "com.example.demo.model.GroceryItem"
+  },
+  {
+    "id": "Milk",
+    "expirationDate": "2024-09-05T16:00:00.000Z",
+    "refrigerated": true,
+    "name": "Low Fat Milk",
+    "quantity": 2,
+    "category": "Dairy",
+    "_class": "com.example.demo.model.PerishableGroceryItem"
+  }
+]
