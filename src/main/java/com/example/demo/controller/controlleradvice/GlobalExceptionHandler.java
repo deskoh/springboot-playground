@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestControllerAdvice
 @Slf4j
@@ -16,6 +17,8 @@ public class GlobalExceptionHandler {
     public void handleValidationException(Exception ex) throws Exception {
         // If the exception is annotated with @ResponseStatus rethrow it and let the framework handle it
         if (AnnotationUtils.findAnnotation(ex.getClass(), ResponseStatus.class) != null)
+            throw ex;
+        if (ex instanceof ResponseStatusException)
             throw ex;
         log.error(ex.getMessage());
     }
