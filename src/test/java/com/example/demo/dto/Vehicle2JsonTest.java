@@ -1,6 +1,5 @@
 package com.example.demo.dto;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
@@ -11,10 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @JsonTest
 public class Vehicle2JsonTest {
     @Autowired
-    private ObjectMapper objectMapper;
-
-    @Autowired
-    private JacksonTester<Vehicle> json;
+    private JacksonTester<Vehicle2> jacksonTester;
 
     @Test
     public void testSerializeElectricVehicle() throws Exception {
@@ -25,7 +21,7 @@ public class Vehicle2JsonTest {
         vehicle.setChargingTime("1h");
 
         // When
-        var json = objectMapper.writeValueAsString(vehicle);
+        var json = jacksonTester.write(vehicle);
 
         // Then
         assertThat(json).isEqualTo("""
@@ -42,7 +38,7 @@ public class Vehicle2JsonTest {
         vehicle.setFuelType("diesel");
 
         // When
-        var json = objectMapper.writeValueAsString(vehicle);
+        var json = jacksonTester.write(vehicle);
 
         // Then
         assertThat(json).isEqualTo("""
@@ -59,7 +55,7 @@ public class Vehicle2JsonTest {
                 """;
 
         // When
-        var vehicle = new ObjectMapper().readerFor(Vehicle2.class).readValue(json);
+        var vehicle = jacksonTester.parseObject(json);
 
         // Then
         assertThat(vehicle.getClass()).isEqualTo(Vehicle2.ElectricVehicle.class);
@@ -78,7 +74,7 @@ public class Vehicle2JsonTest {
                 """;
 
         // When
-        var vehicle = new ObjectMapper().readerFor(Vehicle2.class).readValue(json);
+        var vehicle = jacksonTester.parseObject(json);
 
         // Then
         assertThat(vehicle.getClass()).isEqualTo(Vehicle2.ElectricVehicle.class);
@@ -97,7 +93,7 @@ public class Vehicle2JsonTest {
                 """;
 
         // When
-        var vehicle = new ObjectMapper().readerFor(Vehicle2.class).readValue(json);
+        var vehicle = jacksonTester.parseObject(json);
 
         // Then
         assertThat(vehicle.getClass()).isEqualTo(Vehicle2.FuelVehicle.class);
@@ -116,7 +112,7 @@ public class Vehicle2JsonTest {
                 """;
 
         // When
-        var vehicle = new ObjectMapper().readerFor(Vehicle2.class).readValue(json);
+        var vehicle = jacksonTester.parseObject(json);
 
         // Then
         assertThat(vehicle.getClass()).isEqualTo(Vehicle2.FuelVehicle.class);
