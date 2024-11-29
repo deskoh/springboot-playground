@@ -7,10 +7,12 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @ConfigurationPropertiesScan // Scan for ConfigurationProperties
+@EnableCaching
 // Alternatively: Specify ConfigurationProperties class explicitly
 // @EnableConfigurationProperties({ExtSysConfig.class, ExtSysConfigRecord.class, Settings.class})
 public class DemoApplication {

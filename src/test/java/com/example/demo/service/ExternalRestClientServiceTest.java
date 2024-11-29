@@ -21,7 +21,7 @@ public class ExternalRestClientServiceTest {
 
     @Test
     public void shouldReturnDataFromExternalService() {
-        this.server.expect(requestTo("http://localhost:8080/api/hello"))
+        this.server.expect(requestTo("https://httpbin.org:443/get?data=test"))
                 .andRespond(withSuccess("Mocked Response", MediaType.TEXT_PLAIN));
 
         // Call the method under test
