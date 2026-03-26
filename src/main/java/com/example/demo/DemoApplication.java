@@ -26,8 +26,7 @@ public class DemoApplication {
     @Bean
     ApplicationRunner applicationRunner(
             @Value("${message-from-application-properties:OOPS!}") String valueDoesExist,
-            @Value("${mesage-from-application-properties:OOPS!}") String valueDoesNotExist
-    ) {
+            @Value("${mesage-from-application-properties:OOPS!}") String valueDoesNotExist) {
         return args -> {
             log.debug("this is debug logging");
             log.info("message from application.properties {}", valueDoesExist);

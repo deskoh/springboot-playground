@@ -44,9 +44,8 @@ public class AppConfig {
     @ConditionalOnProperty(value = "app.seed-data", havingValue = "true")
     public Jackson2RepositoryPopulatorFactoryBean getRespositoryPopulator(Jackson2ObjectMapperBuilder builder) {
         var factory = new Jackson2RepositoryPopulatorFactoryBean();
-        factory.setResources(new Resource[]{
-                new ClassPathResource("seed/stores.json"),
-                new ClassPathResource("seed/groceryitems.json")
+        factory.setResources(new Resource[] {
+            new ClassPathResource("seed/stores.json"), new ClassPathResource("seed/groceryitems.json")
         });
 
         // Set custom mapper to support LocalDateTime deserialization

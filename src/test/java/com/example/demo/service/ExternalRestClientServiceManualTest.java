@@ -1,15 +1,15 @@
 package com.example.demo.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
+
 import com.example.demo.config.ExtSysConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestClient;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
-import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 /**
  * Similar to ExternalRestClientServiceTest but without Autowiring
@@ -18,7 +18,6 @@ public class ExternalRestClientServiceManualTest {
     private ExternalRestClientService service;
 
     private MockRestServiceServer server;
-
 
     @BeforeEach
     public void setUp() {
@@ -30,7 +29,8 @@ public class ExternalRestClientServiceManualTest {
 
     @Test
     public void shouldReturnDataFromExternalService() {
-        this.server.expect(requestTo("http://example.com:80/api"))
+        this.server
+                .expect(requestTo("http://example.com:80/api"))
                 .andRespond(withSuccess("Mocked Response", MediaType.TEXT_PLAIN));
 
         // Call the method under test

@@ -1,9 +1,8 @@
 package com.example.demo.model;
 
-import lombok.*;
-
 import java.util.Arrays;
 import java.util.List;
+import lombok.*;
 
 @Builder
 @ToString
@@ -12,13 +11,18 @@ import java.util.List;
 public class Pojo4 {
     @NonNull
     private final String firstName;
+
     @NonNull
     private final String lastName;
+
     @Singular
     private final List<String> hobbies;
+
     @Builder.Default
     private int age = -1;
+
     private String address;
+
     @Builder.Default
     private long created = System.currentTimeMillis();
 

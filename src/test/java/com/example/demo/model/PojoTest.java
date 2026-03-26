@@ -1,11 +1,10 @@
 package com.example.demo.model;
 
-import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
+
+import java.util.Arrays;
+import org.junit.jupiter.api.Test;
 
 public class PojoTest {
 
@@ -63,23 +62,24 @@ public class PojoTest {
     @Test
     public void pojo4_list_constructor_should_work() {
         var pojo = Pojo4.builder()
-                .firstName("").lastName("")
+                .firstName("")
+                .lastName("")
                 .hobbies(Arrays.asList("walking", "running"))
                 .hobby("cycling")
                 .hobby("swimming")
                 .build();
-        assertThat(pojo.getHobbies()).isEqualTo(
-                Arrays.asList("walking", "running", "cycling", "swimming")
-        );
+        assertThat(pojo.getHobbies()).isEqualTo(Arrays.asList("walking", "running", "cycling", "swimming"));
     }
 
     @Test
     public void pojo4_should_throw_exception_when_names_are_not_specified() {
-        assertThatNullPointerException().isThrownBy(() -> Pojo4.builder().hobby("cycling").build());
+        assertThatNullPointerException()
+                .isThrownBy(() -> Pojo4.builder().hobby("cycling").build());
     }
 
     @Test
     public void pojo4_should_throw_exception_when_hobbies_are_not_specified() {
-        assertThatNullPointerException().isThrownBy(() -> Pojo4.builder().hobbies(null).build());
+        assertThatNullPointerException()
+                .isThrownBy(() -> Pojo4.builder().hobbies(null).build());
     }
 }

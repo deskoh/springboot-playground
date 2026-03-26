@@ -1,9 +1,8 @@
 package com.example.demo.model;
 
-import lombok.*;
-
 import java.util.ArrayList;
 import java.util.List;
+import lombok.*;
 
 @RequiredArgsConstructor
 @Setter

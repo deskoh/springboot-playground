@@ -27,8 +27,7 @@ public class MongoIndexCreator implements ApplicationListener<ContextRefreshedEv
         var resolver = new MongoPersistentEntityIndexResolver(mappingContext);
 
         // consider only entities that are annotated with @Document
-        mappingContext.getPersistentEntities()
-                .stream()
+        mappingContext.getPersistentEntities().stream()
                 .filter(it -> it.isAnnotationPresent(Document.class))
                 .forEach(it -> {
                     var indexOps = mongoTemplate.indexOps(it.getType());

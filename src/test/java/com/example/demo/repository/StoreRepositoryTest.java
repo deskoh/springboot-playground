@@ -1,15 +1,14 @@
 package com.example.demo.repository;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.example.demo.model.GroceryStore;
+import java.util.Arrays;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
-
-import java.util.Arrays;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @DataMongoTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -30,14 +29,13 @@ public class StoreRepositoryTest {
         assertThat(results)
                 .extracting(GroceryStore::getStoreName)
                 .containsExactlyInAnyOrder("Green Grocer", "Market Fresh", "City Mart");
-
     }
 
     @Test
     void given_itemNames_findStoresUsingProjection_shouldReturn_correctStores() {
-        record NamesOnly(String storeName) {
-        }
-        var results = storeRepository.findByItemsItemNameIn(Arrays.asList("Apple", "Orange", "Grapes"), NamesOnly.class);
+        record NamesOnly(String storeName) {}
+        var results =
+                storeRepository.findByItemsItemNameIn(Arrays.asList("Apple", "Orange", "Grapes"), NamesOnly.class);
         assertThat(results)
                 .extracting(NamesOnly::storeName)
                 .containsExactlyInAnyOrder("Green Grocer", "Market Fresh", "City Mart");
@@ -49,14 +47,11 @@ public class StoreRepositoryTest {
         assertThat(results)
                 .extracting(GroceryStore::getStoreName)
                 .containsExactlyInAnyOrder("Green Grocer", "Market Fresh", "City Mart");
-
     }
 
     @Test
     void given_itemNames_findStoreNamesWithItems2WithItems_shouldReturn_correctStores() {
         var results = storeRepository.findStoreNamesWithItems(Arrays.asList("Apple", "Orange", "Grapes"));
-        assertThat(results)
-                .containsExactlyInAnyOrder("Green Grocer", "Market Fresh", "City Mart");
-
+        assertThat(results).containsExactlyInAnyOrder("Green Grocer", "Market Fresh", "City Mart");
     }
 }

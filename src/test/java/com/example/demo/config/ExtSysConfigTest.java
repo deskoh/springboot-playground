@@ -1,5 +1,7 @@
 package com.example.demo.config;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -7,15 +9,14 @@ import org.springframework.boot.test.context.ConfigDataApplicationContextInitial
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 // configure initializers to load properties from application.properties
 @SpringJUnitConfig(initializers = ConfigDataApplicationContextInitializer.class)
-@TestPropertySource(properties = {
-        "extSys.url=1.1.1.1",
-        "extSys.port=8080",
-        "extSys.apiKey=secret",
-})
+@TestPropertySource(
+        properties = {
+            "extSys.url=1.1.1.1",
+            "extSys.port=8080",
+            "extSys.apiKey=secret",
+        })
 @EnableConfigurationProperties({ExtSysConfig.class, ExtSysConfigRecord.class})
 public class ExtSysConfigTest {
     @Test

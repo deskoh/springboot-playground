@@ -15,7 +15,7 @@ public class JpaPopulator {
     @Bean
     public Jackson2RepositoryPopulatorFactoryBean getRespositoryPopulator() {
         var factory = new Jackson2RepositoryPopulatorFactoryBean();
-        factory.setResources(new Resource[]{new ClassPathResource("SeedDataTest.json")});
+        factory.setResources(new Resource[] {new ClassPathResource("SeedDataTest.json")});
 
         // Set custom mapper to support LocalDateTime deserialization
         var builder = new Jackson2ObjectMapperBuilder();

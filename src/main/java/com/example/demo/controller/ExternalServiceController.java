@@ -19,7 +19,6 @@ public class ExternalServiceController {
     private final ExternalService service;
     private final ExternalRestClientService restClientService;
 
-
     public ExternalServiceController(ExternalService service, ExternalRestClientService restClientService) {
         this.service = service;
         this.restClientService = restClientService;
@@ -27,22 +26,19 @@ public class ExternalServiceController {
 
     @GetMapping("/external")
     public Mono<String> external() {
-        return service.getData()
-                .map(body -> "External: " + body);
+        return service.getData().map(body -> "External: " + body);
     }
 
     @Cacheable(cacheNames = "external")
     @GetMapping("/external/cached")
     public Mono<String> externalCached() {
-        return service.getData()
-                .map(body -> "External: " + body);
+        return service.getData().map(body -> "External: " + body);
     }
 
     @CachePut("external")
     @GetMapping("/external/cachePut")
     public Mono<String> externalCachedPut() {
-        return service.getData()
-                .map(body -> "External: " + body);
+        return service.getData().map(body -> "External: " + body);
     }
 
     @CacheEvict(value = "external", allEntries = true)

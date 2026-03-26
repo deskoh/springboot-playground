@@ -1,15 +1,15 @@
 package com.example.demo.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
+
 import com.example.demo.config.ExtSysConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.client.MockRestServiceServer;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
-import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 @RestClientTest({ExternalRestClientService.class, ExtSysConfig.class})
 public class ExternalRestClientServiceTest {
@@ -21,7 +21,8 @@ public class ExternalRestClientServiceTest {
 
     @Test
     public void shouldReturnDataFromExternalService() {
-        this.server.expect(requestTo("https://httpbin.org:443/get?data=test"))
+        this.server
+                .expect(requestTo("https://httpbin.org:443/get?data=test"))
                 .andRespond(withSuccess("Mocked Response", MediaType.TEXT_PLAIN));
 
         // Call the method under test

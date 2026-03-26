@@ -27,10 +27,7 @@ public class ExternalService {
     public Mono<String> getData() {
         String url = "%s:%s%s".formatted(config.getUrl(), config.getPort(), config.getPath());
         log.info("Calling URL: {}", url);
-        return this.webclient.get()
-                .uri(url)
-                .retrieve()
-                .bodyToMono(String.class);
+        return this.webclient.get().uri(url).retrieve().bodyToMono(String.class);
     }
 
     // Calling external API using RestTemplate

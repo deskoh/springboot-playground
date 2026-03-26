@@ -1,11 +1,10 @@
 package com.example.demo.repository;
 
 import com.example.demo.model.GroceryItem;
+import java.util.List;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
-
-import java.util.List;
 
 public interface ItemRepository extends MongoRepository<GroceryItem, String> {
 
@@ -25,9 +24,6 @@ public interface ItemRepository extends MongoRepository<GroceryItem, String> {
     @Aggregation("{ $group : { _id : null, total : { $sum : $quantity } } }")
     Long countTotalQuantity();
 
-    @Aggregation({
-            "{ $match: { 'category': ?0 } }",
-            "{ $group : { _id : null, total : { $sum : $quantity } } }"
-    })
+    @Aggregation({"{ $match: { 'category': ?0 } }", "{ $group : { _id : null, total : { $sum : $quantity } } }"})
     Long countTotalQuantityByCategory(String category);
 }

@@ -7,8 +7,10 @@ import lombok.*;
 @ToString
 public class Pojo2 {
     private final String firstName;
+
     @NonNull
     private final String lastName;
+
     @Setter
     private String description;
 }

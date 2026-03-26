@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import com.example.demo.config.JpaPopulator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -7,8 +9,6 @@ import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.context.annotation.Import;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @DataMongoTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

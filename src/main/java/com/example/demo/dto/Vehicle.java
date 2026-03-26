@@ -7,8 +7,8 @@ import lombok.Setter;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = Vehicle.ElectricVehicle.class, name = "electric"),
-        @JsonSubTypes.Type(value = Vehicle.FuelVehicle.class, name = "fuel")
+    @JsonSubTypes.Type(value = Vehicle.ElectricVehicle.class, name = "electric"),
+    @JsonSubTypes.Type(value = Vehicle.FuelVehicle.class, name = "fuel")
 })
 public class Vehicle {
     @Getter

@@ -1,12 +1,11 @@
 package com.example.demo.cache;
 
-import org.springframework.cache.Cache;
-import org.springframework.cache.CacheManager;
-import org.springframework.data.mongodb.core.MongoTemplate;
-
 import java.util.Collection;
 import java.util.Collections;
 import java.util.concurrent.ConcurrentHashMap;
+import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
+import org.springframework.data.mongodb.core.MongoTemplate;
 
 public class MongoCacheManager implements CacheManager {
 

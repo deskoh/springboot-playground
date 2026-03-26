@@ -1,5 +1,8 @@
 package com.example.demo.cache;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.cache.Cache;
@@ -8,10 +11,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.lang.Nullable;
-
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
 
 public class MongoCache implements Cache {
 
@@ -92,7 +91,6 @@ public class MongoCache implements Cache {
         });
     }
 
-
     @Override
     public void put(Object key, @Nullable Object value) {
         mongoTemplate.save(new CacheEntry(key.toString(), value), this.cacheName);
@@ -107,7 +105,6 @@ public class MongoCache implements Cache {
     public void clear() {
         mongoTemplate.dropCollection(this.cacheName);
     }
-
 
     @Data
     @NoArgsConstructor

@@ -1,11 +1,11 @@
 package com.example.demo.dto;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.boot.test.json.JacksonTester;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @JsonTest
 public class VehicleJsonTest {
@@ -24,8 +24,8 @@ public class VehicleJsonTest {
 
         // Then
         assertThat(json).isEqualToJson("""
-                {"type":"electric","colour":"blue","chargingTime":"1h"}
-                """);
+            {"type":"electric","colour":"blue","chargingTime":"1h"}
+            """);
     }
 
     @Test
@@ -40,17 +40,16 @@ public class VehicleJsonTest {
 
         // Then
         assertThat(json).isEqualTo("""
-                {"type":"fuel","colour":"red","fuelType":"diesel"}
-                """.trim());
+            {"type":"fuel","colour":"red","fuelType":"diesel"}
+            """.trim());
     }
-
 
     @Test
     public void testDeserializeElectricVehicle() throws Exception {
         // Given
         String json = """
-                {"type":"electric","colour":"blue","chargingTime":"1h"}
-                """;
+            {"type":"electric","colour":"blue","chargingTime":"1h"}
+            """;
 
         // When
         var vehicle = jacksonTester.parseObject(json);
@@ -67,8 +66,8 @@ public class VehicleJsonTest {
     public void testDeserializeElectricVehicleWithNullValues() throws Exception {
         // Given
         String json = """
-                {"type":"electric","colour":"blue"}
-                """;
+            {"type":"electric","colour":"blue"}
+            """;
 
         // When
         var vehicle = jacksonTester.parseObject(json);
@@ -85,8 +84,8 @@ public class VehicleJsonTest {
     public void testDeserializeFuelVehicle() throws Exception {
         // Given
         String json = """
-                {"type":"fuel","colour":"blue","fuelType":"diesel"}
-                """;
+            {"type":"fuel","colour":"blue","fuelType":"diesel"}
+            """;
 
         // When
         var vehicle = jacksonTester.parseObject(json);
@@ -103,8 +102,8 @@ public class VehicleJsonTest {
     public void testDeserializeFuelVehicleWithNullValues() throws Exception {
         // Given
         String json = """
-                {"type":"fuel","colour":"blue"}
-                """;
+            {"type":"fuel","colour":"blue"}
+            """;
 
         // When
         var vehicle = jacksonTester.parseObject(json);

@@ -1,5 +1,11 @@
 package com.example.demo.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import com.example.demo.config.ExtSysConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,12 +17,6 @@ import org.springframework.web.reactive.function.client.WebClient.RequestHeaders
 import org.springframework.web.reactive.function.client.WebClient.ResponseSpec;
 import reactor.core.publisher.Mono;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 public class ExternalServiceTest {
 
     // No @InjectMocks used as service is constructed manually in @BeforeEach
@@ -24,12 +24,16 @@ public class ExternalServiceTest {
 
     @Mock
     private WebClient webClient;
+
     @Mock
     private RestTemplate restTemplate;
+
     @Mock
     private RequestHeadersUriSpec requestHeadersUriSpec;
+
     @Mock
     private WebClient.RequestHeadersSpec requestHeadersSpec;
+
     @Mock
     private ResponseSpec responseSpec;
 
@@ -69,7 +73,8 @@ public class ExternalServiceTest {
     @Test
     public void shouldReturnDataFromExternalService2() {
         // Mock the response from the RestTemplate
-        when(restTemplate.getForObject("http://example.com:80/api", String.class)).thenReturn("Mocked Response");
+        when(restTemplate.getForObject("http://example.com:80/api", String.class))
+                .thenReturn("Mocked Response");
 
         // Call the method under test
         var result = externalService.getData2();

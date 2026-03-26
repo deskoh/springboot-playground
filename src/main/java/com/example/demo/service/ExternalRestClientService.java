@@ -26,9 +26,6 @@ public class ExternalRestClientService {
     public String getData() {
         var path = config.getPath();
         log.info("Calling path: {}", path);
-        return this.restClient.get()
-                .uri(path)
-                .retrieve()
-                .body(String.class);
+        return this.restClient.get().uri(path).retrieve().body(String.class);
     }
 }
