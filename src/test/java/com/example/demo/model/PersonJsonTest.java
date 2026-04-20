@@ -1,13 +1,15 @@
 package com.example.demo.model;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.cache.test.autoconfigure.AutoConfigureCache;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.boot.test.json.JacksonTester;
+import tools.jackson.databind.ObjectMapper;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+@AutoConfigureCache
 @JsonTest
 public class PersonJsonTest {
     @Autowired
@@ -17,7 +19,7 @@ public class PersonJsonTest {
     private JacksonTester<Person> json;
 
     @Test
-    public void testSerialize() throws Exception {
+    public void testSerialize() {
         // Given
         Person person = new Person("John Doe", 30);
 
@@ -49,7 +51,7 @@ public class PersonJsonTest {
     }
 
     @Test
-    public void testDeserialize() throws Exception {
+    public void testDeserialize() {
         // Given
         String json = "{\"name\":\"John Doe\",\"age\":30}";
 

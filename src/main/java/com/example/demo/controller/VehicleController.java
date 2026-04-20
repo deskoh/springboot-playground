@@ -1,9 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.Vehicle;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/vehicle")
@@ -46,7 +45,7 @@ public class VehicleController {
     }
 
     @GetMapping(path = "/v5", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> getVehicles5() throws JsonProcessingException {
+    public ResponseEntity<Object> getVehicles5() {
         TypeReference<List<Vehicle>> typeReference = new TypeReference<>() {};
         String serializedResult = this.objectMapper.writerFor(typeReference).writeValueAsString(data);
         return ResponseEntity.status(200).body(serializedResult);

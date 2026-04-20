@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.index.IndexOperations;
 import org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexResolver;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
@@ -29,9 +30,11 @@ public class MongoIndexCreator implements ApplicationListener<ContextRefreshedEv
         // consider only entities that are annotated with @Document
         mappingContext.getPersistentEntities().stream()
                 .filter(it -> it.isAnnotationPresent(Document.class))
-                .forEach(it -> {
-                    var indexOps = mongoTemplate.indexOps(it.getType());
-                    resolver.resolveIndexFor(it.getType()).forEach(indexOps::ensureIndex);
+                .forEach(entity -> {
+                    IndexOperations indexOps = mongoTemplate.indexOps(entity.getType());
+                    resolver.resolveIndexFor(entity.getType()).forEach(indexDef -> {
+                        indexOps.createIndex(indexDef);
+                    });
                 });
     }
 }
