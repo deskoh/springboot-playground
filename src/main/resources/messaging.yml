@@ -1,0 +1,23 @@
+messaging:
+  backend:
+    provider: mqtt
+    topics:
+      mqtt:
+        pub:
+          order-created: prod/order/events
+          payment: prod/payment/events
+        sub:
+          order-update: prod/order/events
+      kafka:
+        pub:
+          order-created: prod.order.events
+          payment: prod.payment.events
+        sub:
+          order-update: prod.order.events
+  frontend:
+    topics:
+      pub:
+        order-update: prod/order/events
+        notification: prod/notifications/out
+      sub:
+        notification: prod/notifications/in
