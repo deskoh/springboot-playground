@@ -22,7 +22,9 @@ public class TopicService {
 
     public Topic getTopic(String id) {
         var topic = topics.stream().filter(t -> t.id().equals(id)).findFirst();
-        if (topic.isPresent()) return topic.get();
+        if (topic.isPresent()) {
+            return topic.get();
+        }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Topic not found");
     }
 

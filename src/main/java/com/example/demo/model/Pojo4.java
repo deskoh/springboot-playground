@@ -2,7 +2,12 @@ package com.example.demo.model;
 
 import java.util.Arrays;
 import java.util.List;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
+import lombok.Singular;
+import lombok.ToString;
 
 @Builder
 @ToString

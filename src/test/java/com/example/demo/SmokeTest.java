@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(classes = DemoApplication.class)
-class TestingWebApplicationTests {
+class SmokeTest {
 
     @Autowired
     private HelloController controller;

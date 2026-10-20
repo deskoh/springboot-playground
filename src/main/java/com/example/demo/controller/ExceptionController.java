@@ -24,7 +24,7 @@ public class ExceptionController {
     }
 
     @GetMapping("/401")
-    public Vehicle error400(HttpServletResponse response) throws IOException {
+    public Vehicle error401(HttpServletResponse response) throws IOException {
         response.sendError(401, "unauth");
         return null;
     }

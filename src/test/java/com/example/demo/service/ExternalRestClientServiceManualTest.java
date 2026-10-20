@@ -12,7 +12,7 @@ import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestClient;
 
 /**
- * Similar to ExternalRestClientServiceTest but without Autowiring
+ * Similar to ExternalRestClientServiceTest but without Autowiring.
  */
 public class ExternalRestClientServiceManualTest {
     private ExternalRestClientService service;

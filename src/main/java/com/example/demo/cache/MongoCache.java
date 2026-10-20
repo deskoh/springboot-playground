@@ -112,7 +112,7 @@ public class MongoCache implements Cache {
         private String id;
         private Object value;
 
-        public CacheEntry(String id, @Nullable Object value) {
+        CacheEntry(String id, @Nullable Object value) {
             this.id = id;
             this.value = value;
         }

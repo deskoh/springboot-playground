@@ -28,7 +28,9 @@ public class DataSeedingRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        if (!this.seedData) return;
+        if (!this.seedData) {
+            return;
+        }
         if (groceryItemRepo != null) {
             System.out.println("-----CREATE GROCERY ITEMS-----\n");
             createGroceryItems();

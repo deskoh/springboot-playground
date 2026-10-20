@@ -2,7 +2,11 @@ package com.example.demo.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import lombok.*;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @RequiredArgsConstructor
 @Setter

@@ -55,7 +55,7 @@ public class OfflineMongoCache extends ConcurrentMapCache {
         private String id;
         private Object value;
 
-        public CacheEntry(String id, Object value) {
+        CacheEntry(String id, Object value) {
             this.id = id;
             this.value = value;
         }
