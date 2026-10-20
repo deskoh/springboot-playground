@@ -65,7 +65,7 @@ public class ExceptionControllerTest {
 
     @Test
     public void test400() throws Exception {
-        var ex = mockMvc.perform(get("/exception/404"))
+        var ex = mockMvc.perform(get("/exception/400"))
                 .andExpect(status().isBadRequest())
                 .andReturn()
                 .getResolvedException();

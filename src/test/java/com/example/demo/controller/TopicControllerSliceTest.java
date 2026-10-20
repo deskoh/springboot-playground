@@ -12,6 +12,8 @@ import com.example.demo.model.Topic;
 import com.example.demo.service.TopicService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.cache.CacheType;
+import org.springframework.boot.cache.test.autoconfigure.AutoConfigureCache;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -19,6 +21,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 // only creates beans relevant to TopicController
 @WebMvcTest(TopicController.class)
+@AutoConfigureCache(cacheProvider = CacheType.SIMPLE)
 public class TopicControllerSliceTest {
 
     @MockitoBean
